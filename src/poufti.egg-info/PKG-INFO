@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: poufti
+Version: 0.1.0
+Summary: A high-throughput bacterial cell segmentation and locus tracking pipeline using Cellpose, Spotiflow, and Laptrack.
+Author-email: Liam McGoldrick <lmcgo2@illinois.edu>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: nd2
+Requires-Dist: cellpose==3.1.1.1
+Requires-Dist: spotiflow
+Requires-Dist: pyyaml
+Requires-Dist: tables
+Requires-Dist: shapely
+Requires-Dist: scipy
+Requires-Dist: laptrack
+Requires-Dist: ipython

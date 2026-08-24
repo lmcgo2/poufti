@@ -1,0 +1,29 @@
+cellpose_model: "bact_phase_cp3"
+spotiflow_model: "Infection_Detection_Model_General"
+
+minimum_track_length: 20
+
+run_segmentation:
+    diameter: 0.0
+    cellprob_threshold: 0.0
+    flow_threshold: 0.4
+    min_size: 1
+    remove_edge_masks: True
+
+create_polygon:
+    smoothing_proportionality_factor: 0.15
+    num_of_intervals: 500
+
+split_boundary:
+    num_longitudinal_points: 93
+
+build_internal_mesh:
+    num_lateral_points: 31
+
+run_spotiflow:
+    prob_thresh: 0.5
+
+initialize_laptrack_object:
+    max_distance: 2
+
+save_path: "/home/lmcgo2/processed_data_test/"

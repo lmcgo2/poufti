@@ -1,0 +1,2 @@
+[console_scripts]
+poufti = poufti.main:main

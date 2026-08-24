@@ -1,0 +1,11 @@
+numpy
+pandas
+nd2
+cellpose==3.1.1.1
+spotiflow
+pyyaml
+tables
+shapely
+scipy
+laptrack
+ipython
