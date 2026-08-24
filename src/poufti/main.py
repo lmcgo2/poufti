@@ -49,7 +49,7 @@ def main():
 
     # initialize spotiflow model
     print(f"spotiflow model: {config['spotiflow_model']}")
-    pretrained_path = "/home/lmcgo2/poufti/models/spotiflow_models/" + config["spotiflow_model"]
+    pretrained_path = project_root / "models" / "spotiflow_models" / config["spotiflow_model"]
     spotiflow_model = Spotiflow.from_folder(
         pretrained_path=pretrained_path,
         inference_mode=True,

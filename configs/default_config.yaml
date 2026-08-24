@@ -26,4 +26,4 @@ run_spotiflow:
 initialize_laptrack_object:
     max_distance: 2
 
-save_path: "/home/lmcgo2/processed_data_test/"
+save_path: "/projects/illinois/eng/physics/sangjin/Liam/analysis_results/"
