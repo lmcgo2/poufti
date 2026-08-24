@@ -30,7 +30,6 @@ dependencies = [
     "scipy",
     "laptrack",
     "ipython",
-    "annotations",
 ]
 
 [project.scripts]

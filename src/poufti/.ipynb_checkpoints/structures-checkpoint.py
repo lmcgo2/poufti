@@ -1,5 +1,5 @@
-from dataclasses import dataclass
 from __future__ import annotations
+from dataclasses import dataclass
 import numpy as np
 import shapely
 from pathlib import Path
