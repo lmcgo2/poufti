@@ -12,7 +12,7 @@ from cellpose import models
 
 from poufti.io import parse_pipeline_args, parse_experiment_folder, save_dataset
 
-from poufti.mesh import split_boundary, build_internal_mesh
+from poufti.mesh import split_boundary, build_internal_mesh, refine_mesh_to_equidistant
 
 from poufti.segmentation import run_segmentation, create_cell_registry, create_polygon
 
@@ -44,11 +44,11 @@ def main():
     print(f"Loaded configuration from {config_path.name}")
     
     # initialize cellpose model
-    print(f"cellpose model: {config["cellpose_model"]}")
+    print(f"cellpose model: {config['cellpose_model']}")
     cellpose_model = models.CellposeModel(gpu=True, model_type=config["cellpose_model"])
 
     # initialize spotiflow model
-    print(f"spotiflow model: {config["spotiflow_model"]}")
+    print(f"spotiflow model: {config['spotiflow_model']}")
     pretrained_path = "/home/lmcgo2/poufti/models/spotiflow_models/" + config["spotiflow_model"]
     spotiflow_model = Spotiflow.from_folder(
         pretrained_path=pretrained_path,
@@ -104,8 +104,14 @@ def main():
         for cell in LOCAL_CELL_REGISTRY.values():
             cell.local_polygon = create_polygon(cell, **config["create_polygon"])
             left_wall_points, right_wall_points = split_boundary(cell, **config["split_boundary"])
-            cell.mesh_grid = build_internal_mesh(left_wall_points, right_wall_points, **config["build_internal_mesh"])
+            mesh_grid = build_internal_mesh(left_wall_points, right_wall_points, **config["build_internal_mesh"])
+            cell.mesh_grid = refine_mesh_to_equidistant(
+                mesh_grid,
+                N_points=config["split_boundary"]["num_longitudinal_points"],
+                M_points=config["build_internal_mesh"]["num_lateral_points"]
+            )
         print("Done.")
+
 
         print("Detecting loci...")
         spots_df = run_spotiflow(tracking_array, spotiflow_model, LOCAL_CELL_REGISTRY, **config["run_spotiflow"])

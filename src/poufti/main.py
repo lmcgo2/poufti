@@ -44,11 +44,11 @@ def main():
     print(f"Loaded configuration from {config_path.name}")
     
     # initialize cellpose model
-    print(f"cellpose model: {config["cellpose_model"]}")
+    print(f"cellpose model: {config['cellpose_model']}")
     cellpose_model = models.CellposeModel(gpu=True, model_type=config["cellpose_model"])
 
     # initialize spotiflow model
-    print(f"spotiflow model: {config["spotiflow_model"]}")
+    print(f"spotiflow model: {config['spotiflow_model']}")
     pretrained_path = "/home/lmcgo2/poufti/models/spotiflow_models/" + config["spotiflow_model"]
     spotiflow_model = Spotiflow.from_folder(
         pretrained_path=pretrained_path,
