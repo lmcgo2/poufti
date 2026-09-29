@@ -10,6 +10,9 @@ from poufti.structures import CellData
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def run_segmentation(image, model, diameter, cellprob_threshold, flow_threshold, min_size, remove_edge_masks):
+    """
+    Plugs images into cellpose
+    """
     masks, flows, styles = model.eval(
         image, 
         channels=[0, 0],        # greyscale

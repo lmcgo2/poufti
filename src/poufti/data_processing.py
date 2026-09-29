@@ -7,6 +7,9 @@ from poufti.structures import ExperimentData
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def track_dataframe_cleanup(track_df):
+    '''
+    Removes unnessecarry data columns.
+    '''
     cleaned_track_df = track_df.copy()
     cleaned_track_df = cleaned_track_df.drop(columns=["weighted_cell_id", "tree_id"])
     cleaned_track_df = cleaned_track_df.sort_values(by=["track_id", "frame"])

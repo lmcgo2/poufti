@@ -58,22 +58,22 @@ def parse_pipeline_args() -> tuple[Path, Path]:
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def parse_experiment_folder(root_dir: Path) -> list[Dataset]:
+def parse_experiment_folder(root_dir: Path, image_prefix: str, movie_prefix: str) -> list[Dataset]:
     """
-    Crawls the root directory and strictly pairs phXXX.nd2 files with trackingXXX.nd2 movies.
+    Crawls the root directory and strictly pairs {image_prefix}XXX.nd2 files with {movie_prefix}XXX.nd2 movies.
     """
     paired_datasets = []
     
     # 1. Find all phase ND2 files
-    phase_files = sorted(root_dir.glob("ph*.nd2"))
+    phase_files = sorted(root_dir.glob(f"{image_prefix}*.nd2"))
     
     if not phase_files:
-        print(f"⚠️ Warning: No phase ND2 files starting with 'ph' found in {root_dir.name}")
+        print(f"⚠️ Warning: No ND2 files starting with {image_prefix} found in {root_dir.name}")
         return []
 
     for ph_file in phase_files:
         # 2. Extract the 3-digit ID (e.g., '001') using regex
-        match = re.search(r'ph(\d+)', ph_file.stem)
+        match = re.search(rf'{image_prefix}(\d+)', ph_file.stem)
         if not match:
             continue
             
@@ -81,7 +81,7 @@ def parse_experiment_folder(root_dir: Path) -> list[Dataset]:
         
         # 3. Construct the expected tracking movie path
         # Assuming the entire movie is now a single ND2 file, not a folder
-        tracking_movie = root_dir / f"tracking{dataset_id}.nd2"
+        tracking_movie = root_dir / f"{movie_prefix}{dataset_id}.nd2" ##!!!
         
         # 4. Validation Checks
         if not tracking_movie.is_file():

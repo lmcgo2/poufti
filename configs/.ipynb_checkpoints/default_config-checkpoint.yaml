@@ -1,7 +1,10 @@
-cellpose_model: "bact_phase_cp3"
-spotiflow_model: "Infection_Detection_Model_General"
+image_prefix: "ph"
+movie_prefix: "mCh_tracking"
 
-minimum_track_length: 20
+cellpose_model: "bact_phase_cp3"
+spotiflow_model: "spotiflow_model_general" #"Infection_Detection_Model_General"
+
+minimum_track_length: 40
 
 run_segmentation:
     diameter: 0.0
@@ -24,6 +27,6 @@ run_spotiflow:
     prob_thresh: 0.5
 
 initialize_laptrack_object:
-    max_distance: 2
+    max_distance: 3
 
-save_path: "/projects/illinois/eng/physics/sangjin/Liam/analysis_results/"
+save_path: "/home/lmcgo2/" #"/projects/illinois/eng/physics/sangjin/Liam/analysis_results/"

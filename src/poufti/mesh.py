@@ -21,6 +21,9 @@ def get_max_indices(condensed_array, m):
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def split_boundary(cell, num_longitudinal_points):
+    '''
+    Splits cell outline into "right" and "left" walls with num_longitudinal_points 
+    '''
 
     if num_longitudinal_points % 2 != 1:
         num_longitudinal_points +=1

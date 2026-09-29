@@ -92,6 +92,7 @@ def initialize_laptrack_object(max_distance):
         cutoff=max_distance**2,
         splitting_cutoff=False,  # or max_distance**2 for non-splitting case
         merging_cutoff=False,  # or max_distance**2 for merging case
+        gap_closing_max_frame_count=0,
     )
     return lt
 

@@ -60,7 +60,7 @@ def main():
     lt = initialize_laptrack_object(**config["initialize_laptrack_object"])
     
     # parse the folder into logical Dataset pairs
-    datasets = parse_experiment_folder(experiment_dir)
+    datasets = parse_experiment_folder(experiment_dir, config["image_prefix"], config["movie_prefix"])
 
     if not datasets:
         print("Exiting pipeline. No valid datasets to process.")
